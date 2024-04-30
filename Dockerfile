@@ -4,6 +4,8 @@ FROM node:14 as builder
 # Set the working directory in the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json to the working directory
+
 # Install dependencies
 RUN npm install
 
@@ -11,13 +13,11 @@ RUN npm install
 COPY . .
 
 # Build the application
-RUN npm run build
 
 # Use Nginx as the base image for serving the application
 FROM nginx:alpine
 
 # Copy the built app from the previous stage to Nginx's default public directory
-COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
