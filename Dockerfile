@@ -13,8 +13,8 @@ COPY . .
 # Use Nginx as the base image for serving the application
 FROM nginx:alpine
  
-# Expose port 80 to the outside world
-EXPOSE 80
+# Expose port 5500 to the outside world
+EXPOSE 5500
 
 # Command to run the Nginx server
 CMD ["nginx", "-g", "daemon off;"]
